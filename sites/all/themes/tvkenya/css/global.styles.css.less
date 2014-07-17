@@ -1803,9 +1803,42 @@ tr.error {}
 /* =============================================================================
  *   TV Kenya Theme
  * ========================================================================== */
+@font-face {
+    font-family: 'gibsonsemibold';
+    src: url('fonts/semibold/gibson-semibold-webfont.eot');
+    src: url('fonts/semibold/gibson-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/semibold/gibson-semibold-webfont.woff') format('woff'),
+         url('fonts/semibold/gibson-semibold-webfont.ttf') format('truetype'),
+         url('fonts/semibold/gibson-semibold-webfont.svg#gibsonsemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gibsonlight';
+    src: url('fonts/light/gibson-light-webfont.eot');
+    src: url('fonts/light/gibson-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/light/gibson-light-webfont.woff') format('woff'),
+         url('fonts/light/gibson-light-webfont.ttf') format('truetype'),
+         url('fonts/light/gibson-light-webfont.svg#gibsonlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gibsonregular';
+    src: url('fonts/regular/gibson-regular-webfont.eot');
+    src: url('fonts/regular/gibson-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/regular/gibson-regular-webfont.woff') format('woff'),
+         url('fonts/regular/gibson-regular-webfont.ttf') format('truetype'),
+         url('fonts/regular/gibson-regular-webfont.svg#gibsonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
   color: #000;
+  font-family: 'gibsonlight';
+  font-size: 12pt;
+  font-weight: normal;
 }
 /*
  * Leaderboard Region
@@ -1988,11 +2021,13 @@ body.section-contact-us {
   .field-name-body {
     p {
       text-align: center;
-      font-size: 24pt;
+      font-size: 18pt;
+      line-height: 50px;
     }
     .contact-email {
       background: url('images/contact/email.png') no-repeat scroll 0 center transparent;
       padding-left: 40px;
+      margin-right: 10px;
       a {
         color: #d73000;
         text-decoration: none;
@@ -2001,6 +2036,7 @@ body.section-contact-us {
     .contact-phone {
       background: url('images/contact/phone.png') no-repeat scroll 0 center transparent;
       padding-left: 30px;
+      margin-left: 10px;
     }
   }
 }
