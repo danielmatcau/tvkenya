@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function tvkenya_banner_block_info() {
+  $blocks['top_banner'] = array(
+    'info' => t('Top Banner'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tvkenya_banner_block_view($delta = '') {
+  $block = array();
+  module_load_include('inc', 'tvkenya_banner', 'includes/tvkenya_banner.blocks');
+
+  switch ($delta) {
+    case 'top_banner':
+      $block['subject'] = t('TV Kenya Banner');
+      $block['content'] = _top_banner();
+      break;
+    default:
+      ;
+      break;
+  }
+
+  return $block;
+}
