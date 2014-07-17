@@ -53,9 +53,10 @@ function adaptivetheme_subtheme_process_html(&$vars) {
 /**
  * Override or insert variables for the page templates.
  */
-/* -- Delete this line if you want to use these functions
-function adaptivetheme_subtheme_preprocess_page(&$vars) {
+function tvkenya_preprocess_page(&$vars) {
 }
+
+/* -- Delete this line if you want to use these functions
 function adaptivetheme_subtheme_process_page(&$vars) {
 }
 // */
@@ -64,9 +65,10 @@ function adaptivetheme_subtheme_process_page(&$vars) {
 /**
  * Override or insert variables into the node templates.
  */
-/* -- Delete this line if you want to use these functions
-function adaptivetheme_subtheme_preprocess_node(&$vars) {
+function tvkenya_preprocess_node(&$vars) {
 }
+
+/* -- Delete this line if you want to use these functions
 function adaptivetheme_subtheme_process_node(&$vars) {
 }
 // */
