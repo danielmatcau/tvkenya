@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_init().
+ */
+function tvkenya_general_init() {
+  drupal_add_js(drupal_get_path('module', 'tvkenya_general') . '/js/tvkenya_general.js');
+}

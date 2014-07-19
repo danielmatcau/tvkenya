@@ -1,0 +1,6 @@
+name        = TV Kenya General Settings
+description = "TV Kenya General Settings"
+core        = 7.x
+package     = TV Kenya
+version = "7.x-1.0"
+core = "7.x"
