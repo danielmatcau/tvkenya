@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function tvkenya_channels_block_info() {
+  $blocks['channels_pager'] = array(
+    'info' => t('Channels Pager'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tvkenya_channels_block_view($delta = '') {
+  $block = array();
+  module_load_include('inc', 'tvkenya_channels', 'includes/tvkenya_channels.blocks');
+
+  switch ($delta) {
+    case 'channels_pager':
+      $block['subject'] = t('TV Kenya Banner');
+      $block['content'] = tvkenya_channels_pager_channels();
+    break;
+
+    default:
+      ;
+    break;
+  }
+
+  return $block;
+}
+
+/**
+ * Function views query alter
+ */
+function tvkenya_channels_views_query_alter(&$view, $query) {
+  if ($view->name == 'shows' && $view->current_display == 'page_channels_with_shows') {
+    if (drupal_match_path($_GET['q'], 'schedule/yesterday')) {
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value'] = date('Y-m-d', strtotime('- 1 day'));
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value1'] = date('Y-m-d', strtotime('- 1 day'));
+    }
+    if (drupal_match_path($_GET['q'], 'schedule/today')) {
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value'] = date('Y-m-d', time());
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value1'] = date('Y-m-d', time());
+    }
+    if (drupal_match_path($_GET['q'], 'schedule/tomorrow')) {
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value'] = date('Y-m-d', strtotime('+ 1 day'));
+      $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value1'] = date('Y-m-d', strtotime('+ 1 day'));
+    }
+  }
+}
