@@ -7,6 +7,9 @@ function tvkenya_banner_block_info() {
   $blocks['top_banner'] = array(
     'info' => t('Top Banner'),
   );
+  $blocks['right_banner'] = array(
+      'info' => t('Right Banners'),
+  );
 
   return $blocks;
 }
@@ -22,6 +25,10 @@ function tvkenya_banner_block_view($delta = '') {
     case 'top_banner':
       $block['subject'] = t('TV Kenya Banner');
       $block['content'] = _top_banner();
+      break;
+    case 'right_banner':
+      $block['subject'] = t('TV Kenya Right Banner');
+      $block['content'] = _right_side_bar_banner();
       break;
     default:
       ;
