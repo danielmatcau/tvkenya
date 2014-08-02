@@ -2069,6 +2069,11 @@ body.page-schedule {
         outline: none;
       }
     } 
+    .yesterday {
+      a {
+        padding-left: 0;
+      }
+    }
     a.active {
       font-size: 24pt;
       font-family: "gibsonregular";
@@ -2079,8 +2084,68 @@ body.page-schedule {
     ul.days-menu {
       li {
         height: 84px;     
-        padding-right: 25px;  
+        padding-right: 22px;  
       } 
+    }
+  }
+  #content-wrapper {
+    #main-content {
+      #content {
+        padding: 0;
+      }
+    } 
+  }
+  .group-channels {
+    float: left;
+    width: 216px;
+    padding: 0 8px; 
+    h2.channel-title {
+      margin-top: 0;
+      border-bottom: 2px solid #bfbfbf;
+    }
+    .tv-show {
+      clear: both;
+      .show-time,
+      .show-title,
+      .show-title a,
+      .show-details a {
+        font-size: 12px;
+        font-family: "gibsonlight";
+        color: #000000;
+      }
+      .show-time,
+      .show-title {
+        float: left;
+      }
+      .show-details {
+        float: right;
+        text-indent: -9999px;
+        a {
+          outline: none;
+          display: block;
+          width: 20px;  
+          background: url('images/shows/show-details-bg.png') no-repeat scroll center center transparent;
+        }
+      }
+      .show-title {
+        margin-left: 8px;
+      }
+    }
+    .past-time {
+      .show-time,
+      .show-title,
+      .show-title a,
+      .show-details a {
+        color: #9b9b9b;
+      }
+    }
+    .current-time {
+      .show-time,
+      .show-title,
+      .show-title a,
+      .show-details a {
+        color: #D73000;
+      }
     }
   }
 }
@@ -2089,4 +2154,17 @@ body.page-schedule {
  */
 #block-tvkenya-banner-right-banner {
   margin-top: 30px;
+}
+/**
+ * Node pages
+ */
+body.node-type-show,
+body.node-type-channels {
+  #content-wrapper {
+    #main-content {
+      #content {
+        padding: 0;
+      }
+    } 
+  }
 }
