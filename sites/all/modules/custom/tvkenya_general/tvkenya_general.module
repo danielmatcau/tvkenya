@@ -6,3 +6,13 @@
 function tvkenya_general_init() {
   drupal_add_js(drupal_get_path('module', 'tvkenya_general') . '/js/tvkenya_general.js');
 }
+
+/**
+ * Get text between tags
+ */
+function tvkenya_general_text_between_tags($string, $tagname, $class) {
+  $pattern = "/<$tagname class=\"$class\">(.*)<\/$tagname>/";
+  preg_match($pattern, $string, $matches);
+
+  return isset($matches[1]) ? $matches[1] : '';
+}

@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Implements hook_init().
+ */
+function tvkenya_channels_init() {
+  if (drupal_match_path($_GET['q'], 'schedule/*')) {
+    drupal_add_js(drupal_get_path('module', 'tvkenya_channels') . '/js/tvkenya_channels.js');
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function tvkenya_channels_block_info() {
@@ -50,4 +59,11 @@ function tvkenya_channels_views_query_alter(&$view, $query) {
       $query->where[0]['conditions'][0]['value'][':field_data_field_show_date_field_show_date_value1'] = date('Y-m-d', strtotime('+ 1 day'));
     }
   }
+}
+
+/**
+ * Function views_view_preprocess().
+ */
+function tvkenya_channels_preprocess_views_view_unformatted($vars) {
+
 }

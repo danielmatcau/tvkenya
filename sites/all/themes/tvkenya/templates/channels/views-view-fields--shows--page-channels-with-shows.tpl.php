@@ -41,7 +41,7 @@
     $time_class = 'current-time';
   }
 ?>
-<div class="tv-show <?php print $time_class; ?>">
+<div class="tv-show clearfix <?php print $time_class; ?>">
   <div class="show-time"><?php print $time; ?></div>
   <div class="show-title"><?php print $title; ?></div>
   <?php if (!empty($description)): ?>
