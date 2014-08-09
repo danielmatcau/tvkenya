@@ -57,9 +57,11 @@ function _tvkenya_show_get_navigation($node) {
   $q_previous = db_select('node', 'node_show');
   $q_previous->fields('node_show', array('nid', 'title'));
   $q_previous->fields('field_date', array('field_show_date_value', 'field_show_date_value2'));
+  $q_previous->innerJoin('field_data_body', 'field_body', 'field_body.entity_id = node_show.nid');
   $q_previous->innerJoin('field_data_field_show_date', 'field_date', 'field_date.entity_id = node_show.nid');
   $q_previous->innerJoin('field_data_field_channel', 'field_channel', 'field_channel.entity_id = node_show.nid');
   $q_previous->condition('node_show.type', 'show');
+  $q_previous->condition('field_body.bundle', 'show');
   $q_previous->condition('field_date.bundle', 'show');
   $q_previous->condition('field_channel.bundle', 'show');
   $q_previous->condition('field_channel.field_channel_target_id', $node->field_channel[LANGUAGE_NONE][0]['target_id']);
@@ -80,9 +82,11 @@ function _tvkenya_show_get_navigation($node) {
   $q_next = db_select('node', 'node_show');
   $q_next->fields('node_show', array('nid', 'title'));
   $q_next->fields('field_date', array('field_show_date_value', 'field_show_date_value2'));
+  $q_next->innerJoin('field_data_body', 'field_body', 'field_body.entity_id = node_show.nid');
   $q_next->innerJoin('field_data_field_show_date', 'field_date', 'field_date.entity_id = node_show.nid');
   $q_next->innerJoin('field_data_field_channel', 'field_channel', 'field_channel.entity_id = node_show.nid');
   $q_next->condition('node_show.type', 'show');
+  $q_next->condition('field_body.bundle', 'show');
   $q_next->condition('field_date.bundle', 'show');
   $q_next->condition('field_channel.bundle', 'show');
   $q_next->condition('field_channel.field_channel_target_id', $node->field_channel[LANGUAGE_NONE][0]['target_id']);
