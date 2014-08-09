@@ -1,0 +1,8 @@
+name        = TV Kenya Show
+description = "TV Kenya Show"
+core        = 7.x
+package     = TV Kenya
+version = "7.x-1.0"
+core = "7.x"
+
+dependencies[] = 'facebook_comments'

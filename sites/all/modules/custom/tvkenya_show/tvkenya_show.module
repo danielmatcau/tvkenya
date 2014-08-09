@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_node_view().
+ */
+function tvkenya_show_node_view($node, $view_mode, $langcode) {
+  switch ($node->type) {
+    case 'show':
+      switch ($view_mode) {
+        case 'colorbox':
+        case 'full':
+          $facebook_comments_block = module_invoke('facebook_comments', 'block_view', 'facebook-comments');
+          $node->content['fb_comments'] = array(
+            '#markup' => $facebook_comments_block['content']
+          );
+          break;
+
+        default:
+          break;
+      }
+      break;
+
+    default:
+      break;
+  }
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function tvkenya_show_field_extra_fields() {
+  $extra['node']['show'] = array(
+    'display' => array(
+      'fb_comments' => array(
+        'label' => t('Facebook Comments'),
+        'description' => t('Facebook Comments Box'),
+        'weight' => 0,
+      ),
+    )
+  );
+  return $extra;
+}

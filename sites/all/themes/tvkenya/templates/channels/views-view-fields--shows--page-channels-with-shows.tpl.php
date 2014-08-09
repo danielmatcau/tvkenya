@@ -24,10 +24,12 @@
  * @ingroup views_templates
  */
   $time = strip_tags($fields['field_show_date']->content);
-  $title = strip_tags($fields['title']->content);
+  $title = $fields['title']->content;
   $description = strip_tags($fields['body']->content);
   if (!empty($description)) {
-    $title = l($title, 'node/' . $row->nid, array('attributes' => array('class' => 'overlay-link title')));
+    //overlay-link
+//     $title = l($title, 'node/' . $row->nid, array('attributes' => array('class' => 'title colorbox-node colorbox-node-gallery', 'rel' => 'gallery'), 'query' => array('width' => 600, 'height' => 600)));
+//     $title = $fields['title']->content;
     $details = l('Overlay', 'node/' . $row->nid, array('attributes' => array('class' => 'overlay-link')));
   }
   $now = date('Y-m-d H:i', time());
