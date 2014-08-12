@@ -2183,3 +2183,109 @@ body.node-type-channels {
     } 
   }
 }
+
+body.node-type-show {
+  #overlay-titlebar {
+    margin: 0 auto;
+    width: 960px;
+    #overlay-title-wrapper {
+      display: none;
+    }
+    #overlay-close-wrapper {
+      right: 80px;
+      top: 24px;
+    }    
+  }
+  #overlay-content {
+    background: transparent !important;
+
+    #page {
+      margin: 0 auto;
+      width: 960px;
+  
+      #header-wrapper {
+        display: none;
+      }
+      .node-show-full {
+        background: #FFFFFF;
+        border-radius: 5px; 
+        -moz-border-radius: 5px; 
+        -webkit-border-radius: 5px; 
+        margin-bottom: 0;
+        overflow: hidden;
+
+        header {
+          background: #fcac01;
+          height: 72px;
+          width: 100%;
+    
+          .channel {
+            display: inline-block;
+            float: left;
+            line-height: 72px;
+            padding-left: 24px;
+    
+            img {
+            }
+          }
+          .wrapper-basic-info {
+            color: #FFFFFF;
+            float: left;
+            padding-left: 24px;
+            h1 {
+              font-size: 16px;
+              font-weight: bold;
+            }
+            .start-end-datetime {
+              font-size: 14px;
+            }
+          }
+        }
+        .outer-wrapper-details {
+          padding: 24px;
+          .wrapper-details {
+            float: left;
+            width: 658px;
+            .inner-wrapper-details {
+              .wrapper-image {
+                float: left;
+                margin-right: 24px;
+                img {
+                }
+              }
+              .social {
+              }
+            }
+            .wrapper-comments {
+            }
+          }
+          .ad {
+          }
+        }
+        footer {
+          background: #f4f4f4;
+          clear: both;
+          height: 72px;
+          width: 100%;
+          .show-navigation {
+            padding: 0 24px;
+            a {
+              .title {
+              }
+              .hour {
+                display: block;
+              }
+            }
+            .previous {
+              float: left;
+            }
+            .next {
+              color: #000000;
+              float: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

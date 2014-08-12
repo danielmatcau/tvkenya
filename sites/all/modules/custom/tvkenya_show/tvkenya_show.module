@@ -71,12 +71,10 @@ function _tvkenya_show_get_navigation($node) {
   $previous = $q_previous->execute()->fetchObject();
 
   if ($previous) {
-    $text = "<div class='previous'>";
-    $text .= "<span class='title'>Prev: {$previous->title}</span>";
+    $text = "<span class='title'>Prev: {$previous->title}</span>";
     $text .= "<span class='hour'>" . date("H:i", $previous->field_show_date_value) . ' - ' . date("H:i", $previous->field_show_date_value2) . "</span>";
-    $text .= "</div>";
 
-    $output .= l($text, 'node/' . $previous->nid, array('html' => TRUE));
+    $output .= l($text, 'node/' . $previous->nid, array('html' => TRUE, 'attributes' => array('class' => array('navigation-item previous'))));
   }
 
   $q_next = db_select('node', 'node_show');
@@ -96,12 +94,10 @@ function _tvkenya_show_get_navigation($node) {
   $next = $q_next->execute()->fetchObject();
 
   if ($next) {
-    $text = "<div class='next'>";
-    $text .= "<span class='title'>Next: {$next->title}</span>";
+    $text = "<span class='title'>Next: {$next->title}</span>";
     $text .= "<span class='hour'>" . date("H:i", $next->field_show_date_value) . ' - ' . date("H:i", $next->field_show_date_value2) . "</span>";
-    $text .= "</div>";
 
-    $output .= l($text, 'node/' . $next->nid, array('html' => TRUE));
+    $output .= l($text, 'node/' . $next->nid, array('html' => TRUE, 'attributes' => array('class' => array('navigation-item next'))));
   }
 
   $output .= '</div>';

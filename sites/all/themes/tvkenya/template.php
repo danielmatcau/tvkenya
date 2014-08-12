@@ -66,6 +66,80 @@ function adaptivetheme_subtheme_process_page(&$vars) {
  * Override or insert variables into the node templates.
  */
 function tvkenya_preprocess_node(&$vars) {
+  $function_name = 'tvkenya_preprocess_node_' . $vars['type'];
+  if (function_exists($function_name)) {
+    $function_name($vars);
+  }
+  $vars['classes_array'][] = 'node-' . $vars['type'] . '-' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+}
+
+function tvkenya_preprocess_node_show(&$vars) {
+  switch ($vars['view_mode']) {
+    case 'full':
+      if (isset($vars['field_channel'])) {
+        $channel = $vars['field_channel'][0]['entity'];
+        if (isset($channel->field_channel_image)) {
+          $image_path = file_create_url($channel->field_channel_image[LANGUAGE_NONE][0]['uri']);
+          $vars['channel'] = '<img src="' . $image_path . '" title="' . $channel->title . '" />';
+        }
+        else {
+          $vars['channel'] = $channel->title;
+        }
+      }
+      if (isset($vars['field_show_date'])) {
+        $show_start = $vars['field_show_date'][0]['value'];
+        $show_end = $vars['field_show_date'][0]['value2'];
+        if (date('Y', $show_start) == date('Y', $show_end)) {
+          $start_end_datetime = date('Y', $show_start);
+          if (date('F', $show_start) == date('F', $show_end)) {
+            $start_end_datetime = date('F', $show_start) . ' ' . $start_end_datetime;
+            if (date('j', $show_start) == date('j', $show_end)) {
+              $start_end_datetime = date('j', $show_start) . ' ' . $start_end_datetime;
+              if (date('j', $show_start) == date('j')) {
+                $start_end_datetime = t('Today') . ', ' . $start_end_datetime;
+              }
+              elseif (date('j', $show_start) == date('j') + 1) {
+                $start_end_datetime = t('Tomorrow') . ', ' . $start_end_datetime;
+              }
+              elseif (date('j', $show_start) == date('j') - 1) {
+                $start_end_datetime = t('Yesterday') . ', ' . $start_end_datetime;
+              }
+              $start_end_datetime = date('H:i', $show_start) . ' - ' . date('H:i', $show_end) . ' ' . $start_end_datetime;
+            }
+            else { // different days
+              $start_end_datetime = $start_end_datetime = date('H:i j', $show_start) . ' - ' . date('H:i j', $show_end) . $start_end_datetime;
+            }
+          }
+          else { // different months
+            $start_end_datetime = $start_end_datetime = date('H:i j F', $show_start) . ' - ' . date('H:i j F', $show_end) . $start_end_datetime;
+          }
+        }
+        $vars['start_end_datetime'] = $start_end_datetime;
+      }
+      if (isset($vars['body'][0]['safe_value'])) {
+        $vars['description'] = $vars['body'][0]['safe_value'];
+      }
+      if (isset($vars['field_show_image'])) {
+        $image_url = file_create_url($vars['field_show_image'][0]['uri']);
+        $vars['image'] = '<img src="' . $image_url . '" title="' . $vars['title'] . '" class="show-image" />';
+      }
+      if (isset($vars['content']['navigation'])) {
+        $vars['navigation'] = $vars['content']['navigation']['#markup'];
+      }
+      if (isset($vars['content']['facebook_comments'])) {
+        $vars['comments'] = $vars['content']['facebook_comments']['#markup'];
+      }
+      /*
+      $social_links
+      $comments
+      $ad
+      */
+      break;
+
+    default:
+      break;
+  }
 }
 
 /* -- Delete this line if you want to use these functions
