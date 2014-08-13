@@ -80,8 +80,7 @@ function tvkenya_preprocess_node_show(&$vars) {
       if (isset($vars['field_channel'])) {
         $channel = $vars['field_channel'][0]['entity'];
         if (isset($channel->field_channel_image)) {
-          $image_path = file_create_url($channel->field_channel_image[LANGUAGE_NONE][0]['uri']);
-          $vars['channel'] = '<img src="' . $image_path . '" title="' . $channel->title . '" />';
+          $vars['channel'] = '<img src="' . image_style_url('popup_channel', $channel->field_channel_image[LANGUAGE_NONE][0]['uri']) . '" title="' . $channel->title . '" />';
         }
         else {
           $vars['channel'] = $channel->title;
@@ -121,8 +120,7 @@ function tvkenya_preprocess_node_show(&$vars) {
         $vars['description'] = $vars['body'][0]['safe_value'];
       }
       if (isset($vars['field_show_image'])) {
-        $image_url = file_create_url($vars['field_show_image'][0]['uri']);
-        $vars['image'] = '<img src="' . $image_url . '" title="' . $vars['title'] . '" class="show-image" />';
+        $vars['image'] = '<img src="' . image_style_url('popup_show', $vars['field_show_image'][0]['uri']) . '" title="' . $vars['title'] . '" />';
       }
       if (isset($vars['content']['navigation'])) {
         $vars['navigation'] = $vars['content']['navigation']['#markup'];
@@ -130,11 +128,12 @@ function tvkenya_preprocess_node_show(&$vars) {
       if (isset($vars['content']['facebook_comments'])) {
         $vars['comments'] = $vars['content']['facebook_comments']['#markup'];
       }
-      /*
-      $social_links
-      $comments
-      $ad
-      */
+      if (isset($vars['content']['social_share'])) {
+        $vars['social_links'] = $vars['content']['social_share']['#markup'];
+      }
+      if (isset($vars['content']['ad'])) {
+        $vars['ad'] = $vars['content']['ad']['#markup'];
+      }
       break;
 
     default:

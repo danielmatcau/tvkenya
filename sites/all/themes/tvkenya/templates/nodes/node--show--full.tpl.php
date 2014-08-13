@@ -26,22 +26,29 @@
           <?php print $image; ?>
         </div>
         <?php endif; ?>
-        <?php if (isset($description)): ?>
-        <div class="wrapper-description">
-          <?php print $description; ?>
-        </div>
-        <?php endif; ?>
-        <div class="social">
-          social links
+
+        <div class="outer-wrapper-description">
+          <?php if (isset($description)): ?>
+          <div class="wrapper-description">
+            <?php print $description; ?>
+          </div>
+          <?php endif; ?>
+          <?php if (isset($social_links)): ?>
+          <div class="social">
+            <?php print $social_links; ?>
+          </div>
+          <?php endif; ?>
         </div>
       </div>
       <div class="wrapper-comments">
         <?php print $comments; ?>
       </div>
     </div>
+    <?php if (isset($ad)): ?>
     <div class="ad">
-      <?php print "ad"; ?>
+      <?php print $ad; ?>
     </div>
+    <?php endif; ?>
   </div>
 
   <footer class="navigation">

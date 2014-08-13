@@ -2192,8 +2192,12 @@ body.node-type-show {
       display: none;
     }
     #overlay-close-wrapper {
-      right: 80px;
-      top: 24px;
+      right: 64px;
+      top: 32px;
+      
+      #overlay-close {
+        background: url("../images/close-popup.png") no-repeat scroll 0 0 transparent;
+      }
     }    
   }
   #overlay-content {
@@ -2224,6 +2228,7 @@ body.node-type-show {
             float: left;
             line-height: 72px;
             padding-left: 24px;
+            padding-top: 14px;
     
             img {
             }
@@ -2232,9 +2237,12 @@ body.node-type-show {
             color: #FFFFFF;
             float: left;
             padding-left: 24px;
+            padding-top: 16px;
+
             h1 {
               font-size: 16px;
               font-weight: bold;
+              margin: 0;
             }
             .start-end-datetime {
               font-size: 14px;
@@ -2243,9 +2251,12 @@ body.node-type-show {
         }
         .outer-wrapper-details {
           padding: 24px;
+
           .wrapper-details {
             float: left;
+            margin-right: 12px;
             width: 658px;
+
             .inner-wrapper-details {
               .wrapper-image {
                 float: left;
@@ -2253,13 +2264,24 @@ body.node-type-show {
                 img {
                 }
               }
-              .social {
+              .outer-wrapper-description {
+                display: table;
+
+                .wrapper-description {
+                }
+                .social {
+                  margin-bottom: 20px;
+                }
               }
             }
             .wrapper-comments {
             }
           }
           .ad {
+            display: table;
+            img {
+              
+            }
           }
         }
         footer {
@@ -2268,8 +2290,10 @@ body.node-type-show {
           height: 72px;
           width: 100%;
           .show-navigation {
-            padding: 0 24px;
+            padding: 10px 24px 0;
             a {
+              text-decoration: none;
+
               .title {
               }
               .hour {
@@ -2277,11 +2301,16 @@ body.node-type-show {
               }
             }
             .previous {
+              background: url("../images/navigation-previous.png") no-repeat scroll left center transparent;
+              color: #9197a3;
               float: left;
+              padding-left: 30px;
             }
             .next {
+              background: url("../images/navigation-next.png") no-repeat scroll right center transparent;
               color: #000000;
               float: right;
+              padding-right: 30px;
             }
           }
         }
