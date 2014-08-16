@@ -1860,6 +1860,9 @@ body {
   height: 93px;
   background: url('images/header/big-menu-bg.png') repeat-x scroll 0 0 transparent;
   #block-menu-menu-big-menu {
+    float: left;
+    width: 710px;
+
     ul.menu {
       margin: 0;
       padding: 0;
@@ -1900,6 +1903,65 @@ body {
       }
       li.active-trail {
         border-top: 6px solid #d73000;
+      }
+    }
+  }
+  .finder-block {
+    float: left;
+    width: 250px;
+    .block-title {
+      display: none;
+    }
+    .finder-form {
+      position: relative;
+      label {
+        display: none;
+      }
+      .finder-form-element-show {
+        float: left;
+  
+        .finder-element {
+          padding-left: 20px;
+          width: 200px;
+        }
+        #autocomplete {
+          ul {
+            margin: 0 !important;
+            li {
+              margin: 0 !important;
+            }
+            li:hover {
+              background: #FFFFFF;
+            }
+          }
+          .show-wrapper {
+            .channel {
+              display: inline-block;
+              float: left;
+              text-align: center;
+              width: 50px;
+            }
+            .show {
+              display: block;
+              margin-left: 50px;
+              h3 {
+                margin: 0;
+                a {
+                  color: #000000;
+                  text-decoration: none;
+                }
+              }
+              .date {
+                color: #9b9b9b;
+              }
+            }
+          }
+        }
+      }
+      .form-submit {
+        left: 210px;
+        position: absolute;
+        top: 16px;
       }
     }
   }

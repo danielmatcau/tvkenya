@@ -91,3 +91,76 @@ function _tvkenya_show_get_navigation($node) {
 
   return $output;
 }
+
+/**
+ * Theme show function for finder results.
+ */
+function tvkenya_show_finder_rewrite_result($row) {
+  $output = NULL;
+  $channel_nid = $row->node_field_data_field_channel_nid;
+
+  // Set image.
+  $image_data = $row->field_field_channel_image[0];
+  $channel_image = theme_image_style(array(
+    'style_name' => $image_data['rendered']['#image_style'],
+    'height' => NULL,
+    'width' => NULL,
+    'path' => $image_data['raw']['uri']
+  ));
+
+  $show_title = l($row->node_title, 'node/' . $row->nid);
+  $show_start_datetime = date('H:i', $row->field_field_show_date[0]['raw']['value']);
+  if (date('j') == date('j', $row->field_field_show_date[0]['raw']['value'])) {
+    $show_start_datetime = t('Today') . ' - ' . $show_start_datetime;
+  }
+  elseif (time() > $row->field_field_show_date[0]['raw']['value']) {
+    $show_start_datetime = t('Yesterday') . ' - ' . $show_start_datetime;
+  }
+  elseif (time() < $row->field_field_show_date[0]['raw']['value']) {
+    $show_start_datetime = t('Tomorrow') . ' - ' . $show_start_datetime;
+  }
+
+  $output =
+<<<OUTPUT
+  <div class="show-wrapper">
+    <div class="channel" data-nid="{$channel_nid}">
+      <a href="#channel-nid-{$channel_nid}">{$channel_image}</a>
+    </div>
+    <div class="show">
+      <h3>{$show_title}</h3>
+      <span class="date">{$show_start_datetime}</span>
+    </div>
+  </div>
+OUTPUT;
+
+  return $output;
+}
+
+/**
+ * Implements hook_views_query_alter($view, $query).
+ */
+function tvkenya_show_views_query_alter($view, &$query) {
+  if ($view->name == 'show_view_for_finder') {
+    $url = $_SERVER['HTTP_REFERER'];
+    $day = date('Y-m-d');
+    if (strpos($url, 'schedule')) {
+      $params = explode('schedule/', $url);
+      switch ($params[count($params) - 1]) {
+        case 'yesterday':
+          $datetime = new DateTime('yesterday');
+          $day = $datetime->format('Y-m-d');
+          break;
+
+        case 'tomorrow':
+          $datetime = new DateTime('tomorrow');
+          $day = $datetime->format('Y-m-d');
+          break;
+
+        case 'today':
+        default:
+          break;
+      }
+    }
+    $query->where[1]['conditions'][2]['value'][':field_data_field_show_date_field_show_date_value'] = $day;
+  }
+}

@@ -21,9 +21,8 @@
  * regardless of any changes in the aliasing that might happen if
  * the view is modified.
  */
-
 ?>
 
-<span class="<?php print strtolower(str_replace(' ', '-', $row->node_field_data_field_channel_title)); ?>">
+<span id="channel-nid-<?php print $row->node_field_data_field_channel_nid; ?>" class="<?php print strtolower(str_replace(' ', '-', $row->node_field_data_field_channel_title)); ?>">
   <?php print theme('image_style', array('style_name' => 'channels_height_27', 'path' => $row->field_field_channel_image[0]['raw']['uri'], 'attributes' => array())); ?>
 </span>

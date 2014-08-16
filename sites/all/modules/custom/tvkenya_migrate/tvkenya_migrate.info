@@ -1,0 +1,7 @@
+name=TV Kenya Migrate
+description=Modules used to Import Channels and Shows
+core=7.x
+
+package=TV Kenya
+dependencies[] = 'facebook_comments';
+files[] = includes/tvkenya_migrate.migrate.inc
