@@ -150,7 +150,6 @@ class TVKenyaShowMigration extends TVKenyaMigration {
     $node->comment = COMMENT_NODE_OPEN;
     $node->facebook_comments_enabled = TRUE;
     $node->facebook_comments_amount = 10;
-//     $node->field_channel = $row->channel_id;
     $node->field_channel = array(
       LANGUAGE_NONE => array(
         0 => array(

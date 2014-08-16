@@ -3,5 +3,6 @@ description=Modules used to Import Channels and Shows
 core=7.x
 
 package=TV Kenya
-dependencies[] = 'facebook_comments';
+dependencies[] = 'facebook_comments'
+dependencies[] = 'migrate'
 files[] = includes/tvkenya_migrate.migrate.inc
