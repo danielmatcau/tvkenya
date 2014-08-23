@@ -108,7 +108,14 @@ function tvkenya_show_finder_rewrite_result($row) {
     'path' => $image_data['raw']['uri']
   ));
 
-  $show_title = l($row->node_title, 'node/' . $row->nid);
+  // Trim title
+  $trim_title = views_trim_text(array(
+      'max_length' => 20,
+      'word_boundary' => FALSE,
+      'ellipsis' => TRUE,
+  ), strip_tags($row->node_title, ''));
+
+  $show_title = l($trim_title, 'node/' . $row->nid);
   $show_start_datetime = date('H:i', $row->field_field_show_date[0]['raw']['value']);
   if (date('j') == date('j', $row->field_field_show_date[0]['raw']['value'])) {
     $show_start_datetime = t('Today') . ' - ' . $show_start_datetime;
@@ -122,7 +129,7 @@ function tvkenya_show_finder_rewrite_result($row) {
 
   $output =
 <<<OUTPUT
-  <div class="show-wrapper">
+  <div class="show-wrapper clearfix">
     <div class="channel" data-nid="{$channel_nid}">
       <a href="#channel-nid-{$channel_nid}">{$channel_image}</a>
     </div>
